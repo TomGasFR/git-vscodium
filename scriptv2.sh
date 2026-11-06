@@ -99,6 +99,3 @@ try {
     Set-ScreenOrientation $baseOrientation
     Write-Host "Fin du tour de manège : orientation initiale restaurée."
 }
-
-# Mais mettez moi les exit 0 !
-exit 0
