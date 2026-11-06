@@ -92,7 +92,8 @@ try {
         }
         Start-Sleep -Seconds $sleepSeconds
         if ($DurationSeconds -gt 0 -and $stopwatch.Elapsed.TotalSeconds -ge $DurationSeconds) { break }
-        $current = if ($current -eq $baseOrientation) { $sideOrientation } else { $baseOrientation }
+
+*        $current = if ($current -eq $baseOrientation) { $sideOrientation } else { $baseOrientation }
         Set-ScreenOrientation $current
     }
 } finally {
