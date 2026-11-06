@@ -24,7 +24,7 @@ Tous ces fichiers évoluent, sont relus et partagés. Git permet de savoir
 |-------------------|------|
 | `docs/` | Procédures : installation,le meilleurs exploitation, incidents |
 | `config/` | Configuration de supervision et exemple de variables d'environnement |
-| `scripts/` | `healthcheck.sh` (contrôle simulé) et `backup.sh` (sauvegarde simulée) |
+| `scripts/` | `healthcheck.sh` (contrôle simulé), `backup.sh` (sauvegarde simulée) et `sl.sh` (animation de locomotive) |
 | `sql/` | Requêtes de maintenance à titre de démonstration (jamais exécutées) |
 | `CHANGELOG.md` | Journal des modifications |
 
@@ -35,6 +35,7 @@ Depuis la racine du dépôt, dans un terminal Bash (Linux ou Git Bash sous Windo
 ```bash
 bash scripts/healthcheck.sh
 bash scripts/backup.sh
+bash scripts/sl.sh
 ```
 
 ## Informations
