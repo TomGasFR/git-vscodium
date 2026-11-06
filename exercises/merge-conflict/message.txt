@@ -1,2 +1,2 @@
-Message d'accueil : Bienvenue dans l'equipe Exploitation.
+Message d'accueil : Bienvenue dans l'equipe InfraLab !
 Horaires : 9 h - 17 h.
