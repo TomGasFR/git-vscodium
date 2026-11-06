@@ -113,7 +113,8 @@ foreach ($profile in $existingProfiles) {
         Write-Warning "Profil ignoré car il s'agit d'un lien ou d'une jonction : $($profile.Path)"
         continue
     }
-    if ($PSCmdlet.ShouldProcess($profile.Path, "Supprimer le profil complet de $($profile.Name)")) {
+    $action = 'Supprimer le profil complet de {0}' -f $profile.Name
+    if ($PSCmdlet.ShouldProcess($profile.Path, $action)) {
         Remove-Item -LiteralPath $profile.Path -Recurse -Force
     }
 }
