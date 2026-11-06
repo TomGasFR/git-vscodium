@@ -32,3 +32,5 @@ done < <(tr -d '\r' < "$CONFIG_FILE" | awk '/- name:/ {nom=$3} /port:/ {print no
 
 echo "Statut global : $STATUT"
 [ "$STATUT" = "OK" ]
+
+exit 0
