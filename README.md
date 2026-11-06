@@ -22,7 +22,7 @@ Tous ces fichiers évoluent, sont relus et partagés. Git permet de savoir
 
 | Dossier / fichier | Rôle |
 |-------------------|------|
-| `docs/` | Procédures : installation, exploitation, incidents |
+| `docs/` | Procédures : installation,le meilleurs exploitation, incidents |
 | `config/` | Configuration de supervision et exemple de variables d'environnement |
 | `scripts/` | `healthcheck.sh` (contrôle simulé) et `backup.sh` (sauvegarde simulée) |
 | `sql/` | Requêtes de maintenance à titre de démonstration (jamais exécutées) |
