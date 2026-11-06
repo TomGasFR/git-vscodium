@@ -31,3 +31,6 @@ for ((page = 1; page <= total_pages; page++)); do
     fi
   fi
 done
+
+# Mais mettez moi les exit 0 !
+exit 0
