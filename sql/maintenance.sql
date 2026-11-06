@@ -8,7 +8,7 @@ WHERE statut = 'ouvert'
 GROUP BY niveau;
 
 -- 2. Dernières sauvegardes enregistrées
-SELECT fichier, date_sauvegarde as "c'est la date " 
+SELECT fichier, date_sauvegarde as "c'est la date oui " 
 FROM sauvegardes
 ORDER BY date_sauvegarde DESC
 LIMIT 5;
