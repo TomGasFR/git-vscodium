@@ -24,7 +24,7 @@ Tous ces fichiers évoluent, sont relus et partagés. Git permet de savoir
 |-------------------|------|
 | `docs/` | Procédures : installation,le meilleurs exploitation, incidents |
 | `config/` | Configuration de supervision et exemple de variables d'environnement |
-| `scripts/` | `healthcheck.sh` (contrôle simulé), `backup.sh` (sauvegarde simulée) et `sl.sh` (animation de locomotive) |
+| `scripts/` | Scripts Bash de démonstration et `nettoyage-pc-pret.ps1` (nettoyage local Windows) |
 | `exercises/` | Fichiers de départ pour les exercices Git |
 | `sql/` | Requêtes de maintenance à titre de démonstration (jamais exécutées) |
 | `CHANGELOG.md` | Journal des modifications |
@@ -38,6 +38,17 @@ bash scripts/healthcheck.sh
 bash scripts/backup.sh
 bash scripts/sl.sh
 ```
+
+Pour préparer le retour d'un PC Windows prêté, vérifie d'abord les suppressions :
+
+```powershell
+.\scripts\nettoyage-pc-pret.ps1 -WhatIf
+.\scripts\nettoyage-pc-pret.ps1
+```
+
+Le script supprime les profils locaux complets des navigateurs, le contenu de
+Téléchargements et certains fichiers temporaires/récents. Les mots de passe et
+favoris non synchronisés sont perdus; ferme les navigateurs avant de l'exécuter.
 
 ## Informations
 
