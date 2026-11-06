@@ -7,21 +7,21 @@ depuis l'interface GitHub.
 
 ## Préparation
 
-Les branches `exo/merge-conflit-a` et `exo/merge-conflit-b` partent toutes les
-deux de `dev` et modifient différemment la première ligne de
-`exercises/merge-conflict/message.txt`. La deuxième ligne doit être conservée.
+Les branches `exo/merge-conflit-2-a` et `exo/merge-conflit-2-b` partent toutes
+les deux de `dev` et modifient différemment la première ligne de
+`exercises/merge-conflict-2/message.txt`. La deuxième ligne doit être conservée.
 
 ## Déroulement
 
-1. Créer une pull request de `exo/merge-conflit-a` vers `dev`, puis la fusionner.
-2. Créer ou actualiser la pull request de `exo/merge-conflit-b` vers `dev`.
-   GitHub signale alors le conflit sur `message.txt`.
+1. Créer une pull request de `exo/merge-conflit-2-a` vers `dev`, puis la fusionner.
+2. Créer la pull request de `exo/merge-conflit-2-b` vers `dev`. GitHub signale
+   alors le conflit sur `message.txt`.
 3. Choisir **Resolve conflicts** dans GitHub et remplacer les marqueurs de
    conflit par une formulation convenue, par exemple :
 
    ```text
-   Message d'accueil : Bienvenue dans l'équipe InfraLab !
-   Horaires : 9 h - 17 h.
+   Accueil : Bienvenue dans l'equipe InfraLab !
+   Equipe : Infrastructure.
    ```
 
 4. Marquer le conflit comme résolu, valider le commit de résolution, puis
