@@ -9,7 +9,7 @@ aucun script ne se connecte à un serveur, à un service ou à une base de donn�
 Une équipe d'exploitation (administrateurs, exploitants, DevOps) maintient chaque
 jour de petits documents techniques :
 
-- des procédures d'installation et d'exploitation ;
+- des procédures d'installatifggon et d'exploitation ;
 - une fiche de gestion des incidents ;
 - une configuration de supervision ;
 - deux scripts Bash (contrôle de santé, sauvegarde) ;
