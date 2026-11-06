@@ -8,6 +8,8 @@ set -eu
 RETENTION_DAYS=7
 BACKUP_DIR="backups"
 
+
+
 HORODATAGE="$(date +%Y%m%d-%H%M%S)"
 FICHIER="$BACKUP_DIR/infralab-$HORODATAGE.txt"
 
@@ -18,9 +20,10 @@ mkdir -p "$BACKUP_DIR"
   echo "Contenu : aucun (exercice de formation)"
 } > "$FICHIER"
 
-tar -xzf $FICHIER.tar.gz $FICHIER 2>/dev/null
+tar -cvzf $FICHIER.tar.gz $FICHIER 2>/dev/null
 
 echo "Sauvegarde créée : $FICHIER"
 echo "Rétention configurée : $RETENTION_DAYS jours (aucune purge dans cet exercice)"
+
 
 exit 0
