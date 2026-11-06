@@ -5,6 +5,16 @@ param()
 
 $ErrorActionPreference = 'Stop'
 
+$protectedPaths = @($PSCommandPath)
+$directory = Get-Item -LiteralPath $PSScriptRoot
+while ($null -ne $directory) {
+    if (Test-Path -LiteralPath (Join-Path $directory.FullName '.git')) {
+        $protectedPaths += $directory.FullName
+        break
+    }
+    $directory = $directory.Parent
+}
+
 $browserProcesses = @(
     'brave',
     'chrome',
@@ -39,7 +49,12 @@ $foldersToEmpty = @(
     $env:TEMP,
     (Join-Path $env:LOCALAPPDATA 'Temp'),
     (Join-Path $env:APPDATA 'Microsoft\Windows\Recent'),
-    (Join-Path $env:USERPROFILE 'Downloads')
+    (Join-Path $env:USERPROFILE 'Downloads'),
+    [Environment]::GetFolderPath('Desktop'),
+    [Environment]::GetFolderPath('MyDocuments'),
+    [Environment]::GetFolderPath('MyPictures'),
+    [Environment]::GetFolderPath('MyMusic'),
+    (Join-Path $env:USERPROFILE 'Videos')
 ) | Where-Object { $_ } | Select-Object -Unique
 
 $existingFolders = @(
@@ -47,6 +62,19 @@ $existingFolders = @(
         Test-Path -LiteralPath $_ -PathType Container
     }
 )
+
+function Test-ContainsProtectedPath {
+    param([string]$Path)
+
+    $candidate = [IO.Path]::GetFullPath($Path).TrimEnd('\') + '\'
+    foreach ($protectedPath in $script:protectedPaths) {
+        $protected = [IO.Path]::GetFullPath($protectedPath).TrimEnd('\') + '\'
+        if ($protected.StartsWith($candidate, [StringComparison]::OrdinalIgnoreCase)) {
+            return $true
+        }
+    }
+    return $false
+}
 
 $runningBrowsers = @(
     Get-Process -Name $browserProcesses -ErrorAction SilentlyContinue |
@@ -57,8 +85,10 @@ if ($runningBrowsers.Count -gt 0) {
 }
 
 Write-Host 'Cette opération supprime les profils locaux complets des navigateurs,'
-Write-Host 'les fichiers de Téléchargements et le contenu des dossiers temporaires/récents.'
+Write-Host 'les contenus de Téléchargements, Bureau, Documents, Images, Musique et Vidéos,'
+Write-Host 'ainsi que des dossiers temporaires et récents.'
 Write-Host 'Les favoris et mots de passe locaux non synchronisés seront perdus.'
+Write-Host 'Le profil Windows complet n’est pas supprimé.'
 Write-Host ''
 Write-Host 'Profils de navigateurs détectés :'
 foreach ($profile in $existingProfiles) {
@@ -78,6 +108,11 @@ if (-not $WhatIfPreference) {
 }
 
 foreach ($profile in $existingProfiles) {
+    $profileItem = Get-Item -LiteralPath $profile.Path -Force
+    if ($profileItem.Attributes -band [IO.FileAttributes]::ReparsePoint) {
+        Write-Warning "Profil ignoré car il s'agit d'un lien ou d'une jonction : $($profile.Path)"
+        continue
+    }
     if ($PSCmdlet.ShouldProcess($profile.Path, "Supprimer le profil complet de $($profile.Name)")) {
         Remove-Item -LiteralPath $profile.Path -Recurse -Force
     }
@@ -86,6 +121,14 @@ foreach ($profile in $existingProfiles) {
 foreach ($folder in $existingFolders) {
     $items = @(Get-ChildItem -LiteralPath $folder -Force)
     foreach ($item in $items) {
+        if ($item.Attributes -band [IO.FileAttributes]::ReparsePoint) {
+            Write-Warning "Élément ignoré car il s'agit d'un lien ou d'une jonction : $($item.FullName)"
+            continue
+        }
+        if (Test-ContainsProtectedPath -Path $item.FullName) {
+            Write-Host "Dépôt ou script conservé : $($item.FullName)"
+            continue
+        }
         if ($PSCmdlet.ShouldProcess($item.FullName, 'Supprimer')) {
             Remove-Item -LiteralPath $item.FullName -Recurse -Force
         }

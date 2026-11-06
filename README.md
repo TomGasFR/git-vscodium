@@ -46,9 +46,11 @@ Pour préparer le retour d'un PC Windows prêté, vérifie d'abord les suppressi
 .\scripts\nettoyage-pc-pret.ps1
 ```
 
-Le script supprime les profils locaux complets des navigateurs, le contenu de
-Téléchargements et certains fichiers temporaires/récents. Les mots de passe et
-favoris non synchronisés sont perdus; ferme les navigateurs avant de l'exécuter.
+Le script supprime les profils locaux complets des navigateurs et vide
+Téléchargements, Bureau, Documents, Images, Musique, Vidéos ainsi que certains
+fichiers temporaires/récents du compte courant. Les mots de passe et favoris non
+synchronisés sont perdus; ferme les navigateurs avant de l'exécuter. Le profil
+Windows complet et le dépôt contenant le script sont conservés.
 
 ## Informations
 
