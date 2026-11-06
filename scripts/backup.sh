@@ -18,6 +18,8 @@ mkdir -p "$BACKUP_DIR"
   echo "Contenu : aucun (exercice de formation)"
 } > "$FICHIER"
 
+tar -xzf $FICHIER.tar.gz $FICHIER
+
 echo "Sauvegarde créée : $FICHIER"
 echo "Rétention configurée : $RETENTION_DAYS jours (aucune purge dans cet exercice)"
 
