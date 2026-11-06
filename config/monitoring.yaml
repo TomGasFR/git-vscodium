@@ -1,7 +1,7 @@
 # Configuration de supervision fictive d'InfraLab
 application: infralab
 environment: formation
-check_interval_seconds: 60
+check_interval_seconds: 30
 alert_email: exploitation@example.invalid
 services:
   - name: portail
