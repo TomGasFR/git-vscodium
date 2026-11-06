@@ -25,6 +25,7 @@ Tous ces fichiers évoluent, sont relus et partagés. Git permet de savoir
 | `docs/` | Procédures : installation,le meilleurs exploitation, incidents |
 | `config/` | Configuration de supervision et exemple de variables d'environnement |
 | `scripts/` | `healthcheck.sh` (contrôle simulé), `backup.sh` (sauvegarde simulée) et `sl.sh` (animation de locomotive) |
+| `exercises/` | Fichiers de départ pour les exercices Git |
 | `sql/` | Requêtes de maintenance à titre de démonstration (jamais exécutées) |
 | `CHANGELOG.md` | Journal des modifications |
 
