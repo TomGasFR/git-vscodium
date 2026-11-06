@@ -1,2 +1,2 @@
-Accueil : Bienvenue chez InfraLab.
+Accueil : Bienvenue dans l'equipe Supervision.
 Equipe : Infrastructure.
